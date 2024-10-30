@@ -7,7 +7,7 @@ APP_URL=http://localhost
 LOG_CHANNEL=stack
 
 DB_CONNECTION=mysql
-DB_HOST=rm-bp1q75mgsapt23bimio.mysql.rds.aliyuncs.com
+DB_HOST=rm-bp1885j1h3866h2x8to.mysql.rds.aliyuncs.com
 DB_PORT=3306
 DB_DATABASE=jl
 DB_USERNAME=root
@@ -46,7 +46,7 @@ MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
 MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 
-QINIU_ACCESS_KEY = -09x69iww2QdQh9-EDHoM3Dss-gEYev-0J1aywrc
-QINIU_SECRET_KEY = u9Np8oF7ygZu49cdCbGrVReryiT2IkIOOuacRr7P
-QINIU_URL = qiniu.instenginework.com
+QINIU_ACCESS_KEY = 47BMOtzxzSJQEyZzr-gnMrExPXz-8dDNBmw3gDkr
+QINIU_SECRET_KEY = YnTtYNSARjOwxC8ZEeQ4PFrmMbNAFVsivgXbuQFl
+QINIU_URL = niu.deervision.top
 QINIU_BUCKET =
