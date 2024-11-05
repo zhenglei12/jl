@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Constants\CodeMessageConstants;
 use App\Http\Controllers\Controller;
+use App\Http\Model\Department;
 use App\Http\Model\User;
 use App\Http\Services\UserServices;
 use Illuminate\Http\Request;
@@ -62,12 +63,14 @@ class UserControllers extends Controller
         $this->request->validate([
             'username' => ['required', 'unique:' . (new User())->getTable() . ',name'],
             'password' => 'required',
-            'email' => ['required', 'unique:' . (new User())->getTable() . ',email']
+            'email' => ['required', 'unique:' . (new User())->getTable() . ',email'],
+            'department_id' => ['required', 'exists:' . (new Department())->getTable() . ',id'],
         ]);
         return User::create([
             'name' => $this->request->input('username'),
             'password' => Hash::make($this->request->input('password')),
-            'email' => $this->request->input('email')
+            'email' => $this->request->input('email'),
+            'department_id' => $this->request->input('department_id'),
         ]);
     }
 
@@ -83,8 +86,10 @@ class UserControllers extends Controller
         $this->request->validate([
             'id' => ['required', 'exists:' . (new User())->getTable() . ',id'],
             'username' => ['required', 'unique:' . (new User())->getTable() . ',name,' . $id],
-            'email' => ['unique:' . (new User())->getTable() . ',email,' . $id]
+            'email' => ['unique:' . (new User())->getTable() . ',email,' . $id],
+            'department_id' => ['required', 'exists:' . (new Department())->getTable() . ',id'],
         ]);
+        $data['department_id'] = $this->request->input('department_id');
         $data['name'] = $this->request->input('username');
         if ($this->request->input('password'))
             $data['password'] = Hash::make($this->request->input('password'));
